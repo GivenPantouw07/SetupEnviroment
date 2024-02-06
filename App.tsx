@@ -1,117 +1,59 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
+import {View, Image, ScrollView, StyleSheet} from 'react-native';
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import Title from './src/componets/Title';
+import Input from './src/componets/Input';
+import Heading from './src/componets/Heading';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+    <View style={style.backgroundBody}>
+      <Title texts="Assigment#2" />
+      <Title texts="Basic Component in RN" />
+      <ScrollView>
+        <Input placeholder={'Search here'} />
+        <Input placeholder="Enter your Name" />
+        <Input placeholder="Enter your Email" />
+        <Title texts="Random box" />
+        <View style={style.boxset}>
+          <View style={style.box} />
+        </View>
+        <Title texts="Pictures of Nature" />
+        <Heading caption=" 1. Beach" />
+        <Image source={require('./asset/sunrise.jpg')} style={style.image} />
+        <Heading caption=" 2. Sky" />
+        <Image source={require('./asset/sky.jpg')} style={style.image} />
+        <Heading caption=" 3. Forest" />
+        <Image source={require('./asset/forest.jpg')} style={style.image} />
+        {/* <Image source={}></Image> */}
+        {/* <Image
+        source={{uri:'https://reactnative.dev/'}}
+        style={{width: 200, height: 200}}
+      /> */}
+      </ScrollView>
     </View>
   );
-}
+};
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+const style = StyleSheet.create({
+  backgroundBody: {
+    flexGrow: 1,
+    backgroundColor: 'orange',
+    padding: 20,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  boxset: {
+    flexDirection: 'row',
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  box: {
+    width: 100,
+    height: 100,
+    backgroundColor: 'blue',
   },
-  highlight: {
-    fontWeight: '700',
+  image: {
+    width: 450,
+    height: 450,
   },
 });
 
